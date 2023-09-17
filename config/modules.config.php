@@ -6,6 +6,7 @@ use Laminas\Cache\Storage\Adapter\Filesystem;
 use Laminas\Cache\Storage\Adapter\Memory;
 
 return [
+    'Laminas\Session',
     'Laminas\\Mvc\\I18n',
     'Laminas\\I18n',
     'Laminas\\ComposerAutoloading',

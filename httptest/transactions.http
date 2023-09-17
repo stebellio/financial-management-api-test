@@ -1,6 +1,19 @@
+
+### FETCH ALL
 GET {{host}}/transactions?dateFrom=2023-01-01&dateTo=2023-12-31
 Accept: application/json
 Authorization: Bearer {{auth_token}}
 Cookie: {{phpstorm}}
 
-###
+### CREATE
+POST {{host}}/transactions
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+Cookie: {{phpstorm}}
+
+{
+  "amount": 123,
+  "date": "2023-01-01",
+  "category": 1
+}

@@ -21,7 +21,8 @@
         "laminas-api-tools/api-tools-rest": "^1.8",
         "laminas/laminas-cache": "^3.11",
         "laminas/laminas-component-installer": "^3.1",
-        "laminas/laminas-development-mode": "^3.9"
+        "laminas/laminas-development-mode": "^3.9",
+        "laminas/laminas-session": "^2.16"
     },
     "require-dev": {
         "laminas-api-tools/api-tools-admin": "^2.1",

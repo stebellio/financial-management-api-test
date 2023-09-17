@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace FinalcialManagement\V1\Rest\Transactions;
+namespace FinalcialManagement\V1\Rest\Transactions\InputFilter;
 
 use Laminas\InputFilter\Input;
 use Laminas\InputFilter\InputFilter;
 use Laminas\Validator\Date;
 
-class TransactionsInputFilter extends InputFilter
+class TransactionsParamsInputFilter extends InputFilter
 {
     public function __construct()
     {

@@ -72,6 +72,10 @@ class TransactionGateway extends AbstractTableGateway
     {
         $conditions = [];
 
+        if ($params['userId']) {
+            $conditions['userId'] = $params['userId'];
+        }
+
         if ($params['dateFrom']) {
             $date         = $params['dateFrom'];
             $conditions[] = "date >= '$date'";
