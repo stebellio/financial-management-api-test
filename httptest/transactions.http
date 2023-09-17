@@ -1,0 +1,6 @@
+GET {{host}}/transactions?dateFrom=2023-01-01&dateTo=2023-12-31
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+Cookie: {{phpstorm}}
+
+###

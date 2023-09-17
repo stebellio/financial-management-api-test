@@ -1,0 +1,12 @@
+POST {{host}}/oauth
+Accept: application/json
+Content-Type: application/json
+
+{
+  "client_id": "testclient",
+  "client_secret": "testpass",
+  "grant_type" : "client_credentials"
+}
+
+> {% client.global.set("auth_token", response.body.access_token); %}
+###

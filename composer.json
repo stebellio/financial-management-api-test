@@ -1,23 +1,7 @@
 {
-    "name": "laminas-api-tools/api-tools-skeleton",
+    "name": "stebellio/financial-management-api-test",
     "description": "Skeleton Application for Laminas API Tools",
     "type": "project",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "laminas",
-        "api-tools",
-        "api",
-        "framework"
-    ],
-    "homepage": "https://api-tools.getlaminas.org",
-    "support": {
-        "docs": "https://api-tools.getlaminas.org/documentation",
-        "issues": "https://github.com/laminas-api-tools/api-tools-skeleton/issues",
-        "source": "https://github.com/laminas-api-tools/api-tools-skeleton",
-        "rss": "https://github.com/laminas-api-tools/api-tools-skeleton/releases.atom",
-        "chat": "https://laminas.dev/chat",
-        "forum": "https://discourse.laminas.dev"
-    },
     "config": {
         "process-timeout": 5000,
         "sort-packages": true,
@@ -29,10 +13,13 @@
     },
     "require": {
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+        "ext-pdo": "*",
+        "doctrine/doctrine-orm-module": "^6.0",
         "laminas-api-tools/api-tools": "^1.7",
         "laminas-api-tools/api-tools-content-negotiation": "^1.8",
         "laminas-api-tools/api-tools-documentation": "^1.6",
         "laminas-api-tools/api-tools-rest": "^1.8",
+        "laminas/laminas-cache": "^3.11",
         "laminas/laminas-component-installer": "^3.1",
         "laminas/laminas-development-mode": "^3.9"
     },
