@@ -6,11 +6,15 @@ namespace Application\TableGateway;
 
 use Application\Hydrator\DbHydrator;
 use Application\Model\Transaction;
+use DateTime;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Db\ResultSet\HydratingResultSet;
 use Laminas\Db\Sql\Expression;
+use Laminas\Db\Sql\Sql;
 use Laminas\Db\TableGateway\AbstractTableGateway;
 use Laminas\Paginator\Adapter\DbSelect;
+
+use const DATE_ATOM;
 
 class TransactionGateway extends AbstractTableGateway
 {
@@ -62,6 +66,43 @@ class TransactionGateway extends AbstractTableGateway
             $this->resultSetPrototype,
             $count
         );
+    }
+
+    public function getUserTotalByPeriod(int $userId, DateTime $from, DateTime $to): float
+    {
+        $sql = new Sql($this->getAdapter());
+
+        $dateFrom = $from->format(DATE_ATOM);
+        $dateTo   = $to->format(DATE_ATOM);
+
+        $result = $sql->prepareStatementForSqlObject(
+            $sql->select($this->table)
+                ->columns([
+                    'total' => new Expression('SUM(amount)'),
+                ])
+                ->where(['userId' => $userId])
+            ->where("date >= '$dateFrom'")
+            ->where("date <= '$dateTo'")
+        )->execute()->current();
+
+        return (float) $result['total'];
+    }
+
+    public function addTransaction(Transaction $transaction)
+    {
+        $date = $transaction->getDate();
+
+        $this->insert([
+            'amount'      => $transaction->getAmount(),
+            'date'        => $date instanceof DateTime
+                ? $date->format(DATE_ATOM)
+                : $date,
+            'category_id' => $transaction->getCategoryId(),
+            'created'     => (new DateTime())->format(DATE_ATOM),
+            'userId'      => $transaction->getUserId(),
+        ]);
+
+        return $this->getLastInsertValue();
     }
 
     /**

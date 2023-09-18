@@ -6,11 +6,6 @@ return [
     'api-tools-content-negotiation' => [
         'selectors' => [],
     ],
-    'db'                            => [
-        'adapters' => [
-            'dummy' => [],
-        ],
-    ],
     'router'                        => [
         'routes' => [
             'oauth' => [
@@ -26,6 +21,15 @@ return [
         'authentication' => [
             'map' => [
                 'FinalcialManagement\\V1' => 'auth',
+            ],
+        ],
+    ],
+    'db'                            => [
+        'driver'   => PDO::class,
+        'adapters' => [
+            'default.adapter' => [
+                'driver' => PDO::class,
+                'dsn'    => 'sqlite:data/dbtest.sqlite',
             ],
         ],
     ],

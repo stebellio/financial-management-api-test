@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Application;
 
+use Application\Authentication\CustomAuthentication;
+use Application\Factory\CustomAuthenticationFactory;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
-    'router'       => [
+    'router'          => [
         'routes' => [
             'home' => [
                 'type'    => 'Literal',
@@ -21,12 +23,17 @@ return [
             ],
         ],
     ],
-    'controllers'  => [
+    'service_manager' => [
+        'factories' => [
+            CustomAuthentication::class => CustomAuthenticationFactory::class,
+        ],
+    ],
+    'controllers'     => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
         ],
     ],
-    'view_manager' => [
+    'view_manager'    => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',

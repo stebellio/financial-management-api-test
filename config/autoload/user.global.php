@@ -14,6 +14,23 @@
 
 declare(strict_types=1);
 
+use Laminas\ApiTools\MvcAuth\Authentication\OAuth2Adapter;
+
 return [
-    // ...
+    'api-tools-mvc-auth' => [
+        'authentication' => [
+            'adapters' => [
+                'auth' => [
+                    'adapter' => OAuth2Adapter::class,
+                    'storage' => [
+                        'adapter'  => PDO::class,
+                        'dsn'      => 'sqlite:/var/www/data/dbtest.sqlite',
+                        'route'    => '/oauth',
+                        'username' => '',
+                        'password' => '',
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];

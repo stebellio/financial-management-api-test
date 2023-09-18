@@ -2,7 +2,7 @@
 
 namespace Application\Exception;
 
-class InvalidContentException
+class InvalidContentException extends \Exception
 {
 
 }

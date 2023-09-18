@@ -2,7 +2,7 @@
 
 namespace Application\Exception;
 
-class ParametersException
+class ParametersException extends \Exception
 {
 
 }

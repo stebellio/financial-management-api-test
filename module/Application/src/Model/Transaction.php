@@ -4,15 +4,22 @@ declare(strict_types=1);
 
 namespace Application\Model;
 
+use DateTime;
+
+use function date;
+use function strtotime;
+
 class Transaction
 {
     private int $id;
     private float $amount;
-    private string $date;
+    private DateTime|string $date;
     private int $categoryId;
     private string $categoryName;
 
     private string $created;
+
+    private int $userId;
 
     public function getId(): int
     {
@@ -34,12 +41,12 @@ class Transaction
         $this->amount = $amount;
     }
 
-    public function getDate(): string
+    public function getDate(): DateTime|string
     {
         return $this->date;
     }
 
-    public function setDate(string $date): void
+    public function setDate(DateTime|string $date): void
     {
         $this->date = $date;
     }
@@ -73,4 +80,16 @@ class Transaction
     {
         $this->categoryName = $categoryName;
     }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+
 }
